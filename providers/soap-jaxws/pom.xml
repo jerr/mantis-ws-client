@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.mantisbt.client</groupId>
+		<artifactId>mantis-ws-client-parent</artifactId>
+		<version>1.2.5-SNAPSHOT</version>
+		<relativePath>../../</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>mantis-ws-client-soap-jaxws</artifactId>
+	<packaging>jar</packaging>
+	<name>MentisBT WS Client :: Soap JaxWS</name>
+
+
+	<properties>
+		<jaxws.version>2.1.4</jaxws.version>
+		<jaxws-maven.version>1.10</jaxws-maven.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>${jaxws.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>${jaxws-maven.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<wsdlDirectory> ${basedir}/src/main/wsdl</wsdlDirectory>
+					<packageName>org.mantisbt.client.soap</packageName>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
